@@ -9,7 +9,6 @@
 <body>
 <div id="loginScreen" class="login-screen hidden">
   <div class="login-card">
-    <div class="login-logo">LH</div>
     <h1 class="login-title">LT Booking System</h1>
     <p class="login-sub">Sign in with your account</p>
     <form id="loginForm" novalidate>
@@ -71,26 +70,21 @@
 <div id="view-dashboard" class="view active">
 <div class="stats-row">
         <div class="stat-box">
-          <div class="stat-icon icon-blue"></div>
           <div><div class="stat-num" id="statTotal">-</div><div class="stat-lbl">Total Halls</div></div>
         </div>
         <div class="stat-box">
-          <div class="stat-icon icon-green"></div>
           <div><div class="stat-num" id="statAvail">-</div><div class="stat-lbl">Available</div></div>
         </div>
         <div class="stat-box">
-          <div class="stat-icon icon-orange">!</div>
           <div><div class="stat-num" id="statOcc">-</div><div class="stat-lbl">Occupied</div></div>
         </div>
         <div class="stat-box">
-          <div class="stat-icon icon-purple"></div>
           <div><div class="stat-num">3</div><div class="stat-lbl">Buildings</div></div>
         </div>
       </div>
 <div class="filters-card">
         <div class="filters-top">
           <div class="search-wrap">
-            <span class="search-ico"></span>
             <input type="text" id="searchInput" class="search-inp" placeholder="Search by hall ID, building or facility..."/>
           </div>
           <div class="filter-selects">
@@ -196,7 +190,7 @@
           </form>
         </div>
         <div class="hall-preview" id="hallPreview">
-          <div class="preview-placeholder"><div class="preview-ico"></div><p>Select a hall to see details &amp; today's schedule</p></div>
+          <div class="preview-placeholder"><p>Select a hall to see details &amp; today's schedule</p></div>
         </div>
       </div>
     </div>
@@ -234,7 +228,6 @@
 </div>
 <div class="modal-bg" id="cancelModal">
   <div class="modal-box confirm-box">
-    <div class="confirm-ico"></div>
     <h2 class="modal-title">Cancel Booking?</h2>
     <p class="confirm-txt" id="cancelMsg">This booking will be marked as cancelled.</p>
     <div class="modal-ft" style="justify-content:center;gap:12px">
@@ -360,7 +353,6 @@
 </div>
 <div class="modal-bg" id="deleteHallModal">
   <div class="modal-box confirm-box">
-    <div class="confirm-ico"></div>
     <h2 class="modal-title">Delete Lecture Hall?</h2>
     <p class="confirm-txt" id="deleteHallMsg">This action cannot be undone.</p>
     <div class="modal-ft" style="justify-content:center;gap:12px">
@@ -371,7 +363,6 @@
 </div>
 <div class="modal-bg" id="deleteBookingModal">
   <div class="modal-box confirm-box">
-    <div class="confirm-ico"></div>
     <h2 class="modal-title">Delete Booking?</h2>
     <p class="confirm-txt">Are you sure you want to completely remove this booking from the system?</p>
     <div class="modal-ft" style="justify-content:center;gap:12px;background:none;border-top:none;padding-top:0;">

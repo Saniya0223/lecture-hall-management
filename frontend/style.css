@@ -79,12 +79,6 @@ opacity: 1;
   box-shadow: 0 20px 60px rgba(0, 0, 0, .25)
 }
 
-.login-logo {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: .5rem
-}
-
 .login-title {
   font-size: 1.55rem;
   font-weight: 800;
@@ -359,37 +353,6 @@ opacity: 1;
   box-shadow: var(--shadow)
 }
 
-.stat-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0
-}
-
-.icon-blue {
-  background: #eff6ff;
-  color: var(--blue)
-}
-
-.icon-green {
-  background: var(--green-bg);
-  color: var(--green)
-}
-
-.icon-orange {
-  background: var(--orange-bg);
-  color: var(--orange)
-}
-
-.icon-purple {
-  background: #f5f3ff;
-  color: #7c3aed
-}
-
 .stat-num {
   font-size: 2rem;
   font-weight: 800;
@@ -426,18 +389,9 @@ opacity: 1;
   min-width: 220px
 }
 
-.search-ico {
-  position: absolute;
-  left: .85rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text3);
-  font-size: .85rem
-}
-
 .search-inp {
   width: 100%;
-  padding: .55rem .85rem .55rem 2.3rem;
+  padding: .55rem .85rem;
   background: #f8fafc;
   border: 1.5px solid var(--border2);
   border-radius: var(--radius-xs);
@@ -575,18 +529,6 @@ opacity: 1;
   transform: translateY(-2px)
 }
 
-.card-top-bar {
-  height: 4px
-}
-
-.bar-green {
-  background: linear-gradient(90deg, #10b981, #059669)
-}
-
-.bar-orange {
-  background: linear-gradient(90deg, #f59e0b, #d97706)
-}
-
 .card-body {
   padding: 1.4rem
 }
@@ -661,10 +603,6 @@ opacity: 1;
   display: flex;
   align-items: center;
   gap: .4rem
-}
-
-.meta-ico {
-  font-size: .85rem
 }
 
 .tags-row {
@@ -930,11 +868,6 @@ opacity: 1;
   color: var(--text3)
 }
 
-.preview-ico {
-  font-size: 3rem;
-  margin-bottom: .75rem
-}
-
 .preview-hall-name {
   font-size: 1.15rem;
   font-weight: 800;
@@ -1167,11 +1100,6 @@ opacity: 1;
   border-radius: var(--radius)
 }
 
-.empty-ico {
-  font-size: 3rem;
-  margin-bottom: .75rem
-}
-
 .my-bookings-list {
   display: flex;
   flex-direction: column;
@@ -1336,11 +1264,6 @@ opacity: 1;
 .confirm-box {
   text-align: center;
   padding: 2.5rem 2rem
-}
-
-.confirm-ico {
-  font-size: 3rem;
-  margin-bottom: .75rem
 }
 
 .confirm-txt {
@@ -1606,10 +1529,6 @@ textarea {
   gap: 0;
 }
 
-.stat-icon {
-  display: none;
-}
-
 .stat-num {
   font-size: 22px;
   font-weight: 600;
@@ -1648,10 +1567,6 @@ textarea {
 
 .search-wrap {
   min-width: 320px;
-}
-
-.search-ico {
-  display: none;
 }
 
 .search-inp {
@@ -1748,10 +1663,14 @@ textarea {
 
 .halls-grid {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  align-items: stretch;
   gap: 10px;
 }
 
 .hall-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
   overflow: hidden;
 }
 
@@ -1761,11 +1680,10 @@ textarea {
   border-color: #bdb8ad;
 }
 
-.card-top-bar {
-  display: none;
-}
-
 .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 14px;
 }
 
@@ -1797,14 +1715,6 @@ textarea {
   color: var(--text2);
   font-size: 13px;
   gap: 0;
-}
-
-.meta-ico,
-.preview-ico,
-.empty-ico,
-.confirm-ico,
-.login-logo {
-  display: none;
 }
 
 .status-badge,
@@ -1883,6 +1793,7 @@ textarea {
 
 .card-actions {
   gap: 8px;
+  margin-top: auto;
 }
 
 .btn-solid,

@@ -22,7 +22,7 @@ const readStoredUser = () => {
 
 let user = readStoredUser();
 let allHalls = [];
-let activeFacility = '';
+let activeFacilities = [];
 let pendingCancelId = null;
 let loginReady = false;
 let navReady = false;
@@ -278,7 +278,6 @@ function makeCard(h) {
   const div = document.createElement('div');
   div.className = 'hall-card';
   div.innerHTML = `
-    <div class="card-top-bar ${avail ? 'bar-green' : 'bar-orange'}"></div>
     <div class="card-body">
       <div class="card-label"><span class="card-label-txt">Room</span>${badge}</div>
       <div class="card-num">${h.name}</div>
@@ -330,24 +329,41 @@ function setupDashFilters() {
   document.getElementById('filterCapacity').addEventListener('input', () => debounce(applyFilters));
   document.getElementById('facilityPills').addEventListener('click', e => {
     const pill = e.target.closest('.fac-pill'); if (!pill) return;
-    document.querySelectorAll('.fac-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    activeFacility = pill.dataset.fac;
+    const fac = pill.dataset.fac;
+
+    if (!fac) {
+      activeFacilities = [];
+      document.querySelectorAll('.fac-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    } else {
+      activeFacilities = activeFacilities.includes(fac)
+        ? activeFacilities.filter(item => item !== fac)
+        : [...activeFacilities, fac];
+
+      pill.classList.toggle('active', activeFacilities.includes(fac));
+      document.querySelector('.fac-pill[data-fac=""]').classList.toggle('active', activeFacilities.length === 0);
+    }
+
     applyFilters();
   });
 }
 
 function applyFilters() {
-  const search = document.getElementById('searchInput').value.toLowerCase();
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  const numericSearch = /^\d+$/.test(search) ? Number(search) : null;
   const bld = document.getElementById('filterBuilding').value;
   const status = document.getElementById('filterStatus').value;
   const cap = parseInt(document.getElementById('filterCapacity').value) || 0;
   let filtered = allHalls.filter(h => {
-    const ms = !search || h.name.toLowerCase().includes(search) || h.building.toLowerCase().includes(search) || (h.description || '').toLowerCase().includes(search);
+    const ms = !search ||
+      (numericSearch !== null
+        ? Number(h.hall_id) === numericSearch || h.name.toLowerCase() === `lt-${numericSearch}`
+        : h.name.toLowerCase().includes(search) || h.building.toLowerCase().includes(search) || (h.description || '').toLowerCase().includes(search));
     const mb = !bld || h.building === bld;
     const mst = !status || h.status === status;
     const mc = !cap || h.capacity >= cap;
-    const mf = !activeFacility || (h.facilities || []).includes(activeFacility);
+    const hallFacilities = h.facilities || [];
+    const mf = activeFacilities.length === 0 || activeFacilities.every(fac => hallFacilities.includes(fac));
     return ms && mb && mst && mc && mf;
   });
   renderByBuilding(filtered);
